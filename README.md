@@ -28,6 +28,20 @@ Una raccolta di automazioni pronte da importare in **Home Assistant**. Scegli i 
 
 **Importazione alternativa:** copia il **[link GitHub dell'automazione](https://github.com/luigi-regolo/automazioni-home-assistant/blob/main/automations/ingresso/spegni_luce_fine_movimento.yaml)** e incollalo in **Home Assistant → Impostazioni → Automazioni e scene → Progetti → Importa progetto**.
 
+### 03 — Aggiorna entità selezionate ogni 20 secondi
+
+**Cosa fa:** richiede ogni 20 secondi l'aggiornamento delle entità scelte dall'utente tramite l'azione ufficiale `homeassistant.update_entity`.
+
+**Requisiti:** una o più entità che supportano l'aggiornamento su richiesta. L'effetto dipende dall'integrazione: le entità che non supportano il polling potrebbero non aggiornarsi.
+
+**Attenzione:** non è una soluzione ai falsi positivi GPS. Aggiornare un'entità persona **non** forza il telefono a comunicare una nuova posizione. Un intervallo di 20 secondi può aumentare il carico o causare limitazioni delle integrazioni cloud. Usala solo per entità compatibili e realmente necessarie.
+
+[![Importa in Home Assistant](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2Fluigi-regolo%2Fautomazioni-home-assistant%2Fblob%2Fmain%2Fautomations%2Fsensori%2Faggiorna_entita_ogni_20_secondi.yaml)
+
+**[Importa direttamente in Home Assistant](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2Fluigi-regolo%2Fautomazioni-home-assistant%2Fblob%2Fmain%2Fautomations%2Fsensori%2Faggiorna_entita_ogni_20_secondi.yaml)**
+
+**Importazione alternativa:** copia il **[link GitHub dell'automazione](https://github.com/luigi-regolo/automazioni-home-assistant/blob/main/automations/sensori/aggiorna_entita_ogni_20_secondi.yaml)** e incollalo in **Home Assistant → Impostazioni → Automazioni e scene → Progetti → Importa progetto**.
+
 ### Dopo l'importazione
 
 1. Apri il progetto appena importato e scegli **Crea automazione**.
