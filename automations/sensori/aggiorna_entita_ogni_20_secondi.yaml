@@ -1,0 +1,33 @@
+blueprint:
+  name: Aggiorna entita selezionate ogni 20 secondi
+  description: >-
+    Richiede un aggiornamento delle entita selezionate ogni 20 secondi
+    tramite homeassistant.update_entity. Funziona solo per le entita
+    che supportano l'aggiornamento su richiesta. Non forza un nuovo
+    rilevamento GPS, non corregge i falsi positivi di presenza e puo
+    aumentare il carico sulle integrazioni. Selezionare solo le entita
+    per cui un aggiornamento cosi frequente e necessario e supportato.
+  domain: automation
+  input:
+    entita_da_aggiornare:
+      name: Entita da aggiornare
+      description: >-
+        Seleziona una o piu entita che supportano l'aggiornamento
+        su richiesta. Evita di selezionare entita persona per tentare
+        di aggiornare la posizione dello smartphone.
+      selector:
+        entity:
+          multiple: true
+
+triggers:
+  - trigger: time_pattern
+    seconds: "/20"
+
+conditions: []
+
+actions:
+  - action: homeassistant.update_entity
+    target:
+      entity_id: !input entita_da_aggiornare
+
+mode: single
