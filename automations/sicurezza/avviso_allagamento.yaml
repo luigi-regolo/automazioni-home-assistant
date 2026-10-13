@@ -1,0 +1,43 @@
+blueprint:
+  name: "Avviso allagamento con notifiche smartphone e Alexa"
+  description: >-
+    Quando un sensore segnala presenza di acqua, esegue le notifiche
+    configurate dall'utente. Seleziona il sensore e aggiungi nell'editor
+    delle azioni almeno una notifica smartphone. Puoi aggiungere anche
+    un annuncio Alexa, se la tua installazione lo supporta.
+    Messaggio demo: Attenzione. Rilevata presenza di acqua. Controlla subito.
+    Le notifiche sono configurate dall'utente: nessun dispositivo o
+    servizio personale e preimpostato.
+  domain: automation
+  author: luigi-regolo
+  input:
+    sensore_allagamento:
+      name: Sensore di allagamento
+      description: Seleziona il sensore che segnala presenza di acqua.
+      selector:
+        entity:
+          filter:
+            - domain: binary_sensor
+              device_class: moisture
+    azioni_notifica:
+      name: Notifiche da inviare
+      description: >-
+        Aggiungi tramite l'interfaccia almeno un'azione di notifica
+        per il tuo smartphone e, facoltativamente, un'azione di
+        annuncio Alexa. Per ogni azione usa il messaggio demo:
+        Attenzione. Rilevata presenza di acqua. Controlla subito.
+        Non lasciare vuota questa sezione.
+      selector:
+        action: {}
+
+triggers:
+  - trigger: state
+    entity_id: !input sensore_allagamento
+    from: "off"
+    to: "on"
+
+conditions: []
+
+actions: !input azioni_notifica
+
+mode: single
