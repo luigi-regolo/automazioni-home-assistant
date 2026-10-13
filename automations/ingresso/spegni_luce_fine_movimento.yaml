@@ -1,0 +1,56 @@
+blueprint:
+  name: Spegni luce ingresso quando termina il movimento
+  description: >-
+    Spegne la luce selezionata quando il sensore smette di rilevare
+    movimento, soltanto se la porta è chiusa e se è dopo il tramonto
+    oppure prima dell'alba. Nessun ritardo o azione aggiuntiva.
+  domain: automation
+  input:
+    sensore_movimento:
+      name: Sensore di movimento
+      description: Seleziona il sensore che rileva la fine del movimento.
+      selector:
+        entity:
+          filter:
+            - domain: binary_sensor
+              device_class: motion
+    sensore_porta:
+      name: Sensore porta
+      description: Seleziona il sensore che segnala quando la porta è chiusa.
+      selector:
+        entity:
+          filter:
+            - domain: binary_sensor
+              device_class:
+                - door
+                - opening
+    luce_ingresso:
+      name: Luce da spegnere
+      description: Seleziona la luce da spegnere.
+      selector:
+        target:
+          entity:
+            - domain: light
+
+mode: single
+
+triggers:
+  - trigger: state
+    entity_id: !input sensore_movimento
+    from: "on"
+    to: "off"
+
+conditions:
+  - condition: state
+    entity_id: !input sensore_porta
+    state: "off"
+  - condition: or
+    conditions:
+      - condition: sun
+        after: sunset
+      - condition: sun
+        before: sunrise
+
+actions:
+  - action: light.turn_off
+    target: !input luce_ingresso
