@@ -42,6 +42,22 @@ Una raccolta di automazioni pronte da importare in **Home Assistant**. Scegli i 
 
 **Importazione alternativa:** copia il **[link GitHub dell'automazione](https://github.com/luigi-regolo/automazioni-home-assistant/blob/main/automations/sensori/aggiorna_entita_ogni_20_secondi.yaml)** e incollalo in **Home Assistant → Impostazioni → Automazioni e scene → Progetti → Importa progetto**.
 
+### 04 — Avviso allagamento con notifiche smartphone e Alexa
+
+**Cosa fa:** quando un sensore rileva acqua, esegue le azioni di notifica impostate dall'utente. Nessuna condizione aggiuntiva.
+
+**Richiede:** un sensore binario di allagamento (`binary_sensor` con classe `moisture`) e almeno un servizio di notifica funzionante. L'annuncio Alexa è facoltativo e richiede un'integrazione compatibile (ad esempio Alexa Media Player, non ufficiale).
+
+[![Importa in Home Assistant](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2Fluigi-regolo%2Fautomazioni-home-assistant%2Fblob%2Fmain%2Fautomations%2Fsicurezza%2Favviso_allagamento.yaml)
+
+**[Importa direttamente in Home Assistant](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2Fluigi-regolo%2Fautomazioni-home-assistant%2Fblob%2Fmain%2Fautomations%2Fsicurezza%2Favviso_allagamento.yaml)**
+
+**Importazione alternativa:** copia il **[link GitHub dell'automazione](https://github.com/luigi-regolo/automazioni-home-assistant/blob/main/automations/sicurezza/avviso_allagamento.yaml)** e incollalo in **Impostazioni → Automazioni e scene → Progetti → Importa progetto**.
+
+Dopo l'importazione seleziona il sensore. Nel campo **Notifiche da inviare** configura almeno un'azione di notifica sul tuo telefono e, se disponibile, un annuncio Alexa. Messaggio demo suggerito: **Attenzione. Rilevata presenza di acqua. Controlla subito.**
+
+> **Stato:** versione da testare in Home Assistant prima di condividerla su TikTok. La notifica dipende dalla disponibilità delle integrazioni e della connessione, e non sostituisce un sistema di protezione antiallagamento.
+
 ### Dopo l'importazione
 
 1. Apri il progetto appena importato e scegli **Crea automazione**.
