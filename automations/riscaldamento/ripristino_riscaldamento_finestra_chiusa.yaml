@@ -1,0 +1,44 @@
+blueprint:
+  name: "Ripristina riscaldamento alla chiusura della finestra"
+  description: >-
+    Quando una finestra passa da aperta a chiusa e rimane chiusa per
+    un minuto, imposta sul termostato un preset scelto dall'utente.
+    Per replicare l'esempio originale, seleziona Pianificazione se
+    disponibile. Il preset effettivamente supportato dipende
+    dall'integrazione del termostato. Non recupera automaticamente
+    la modalità precedente e non aggiunge altre condizioni.
+  domain: automation
+  author: luigi-regolo
+  input:
+    sensore_finestra:
+      name: Sensore finestra
+      description: Seleziona il sensore che indica se la finestra è aperta.
+      selector:
+        entity:
+          filter:
+            - domain: binary_sensor
+              device_class:
+                - window
+                - opening
+    azione_termostato:
+      name: Modalità termostato da ripristinare
+      description: >-
+        Aggiungi l'azione "Imposta modalità preimpostata termostato",
+        seleziona il termostato e scegli un preset supportato,
+        ad esempio Pianificazione. L'azione non deve rimanere vuota.
+      selector:
+        action: {}
+
+triggers:
+  - trigger: state
+    entity_id: !input sensore_finestra
+    from: "on"
+    to: "off"
+    for:
+      minutes: 1
+
+conditions: []
+
+actions: !input azione_termostato
+
+mode: single
