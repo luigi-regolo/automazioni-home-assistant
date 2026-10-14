@@ -90,6 +90,20 @@ Dopo l'importazione seleziona il sensore. Nel campo **Notifiche da inviare** con
 
 > **Da testare prima di pubblicarla su TikTok.** Questa automazione è complementare ad AUTO 05. Se usata con AUTO 05, seleziona lo stesso sensore e climatizzatore, e mantieni la soglia di spegnimento inferiore a quella di accensione. La notifica viene inviata dopo il comando, senza verifica dello stato effettivo del climatizzatore.
 
+### 07 — Dashboard automatica in base al movimento
+
+**Cosa fa:** quando un sensore rileva movimento per almeno **1 secondo**, imposta l'opzione scelta in un aiutante **input_select**. Una dashboard già configurata per leggere quel selettore può quindi mostrare l'ambiente corrispondente.
+
+**Requisiti:** un sensore di movimento, un aiutante a tendina (`input_select`) con le opzioni desiderate e una dashboard già predisposta per reagire al suo valore. **Questo progetto non crea la dashboard e non cambia direttamente la pagina aperta nel browser.**
+
+[![Importa in Home Assistant](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2Fluigi-regolo%2Fautomazioni-home-assistant%2Fblob%2Fmain%2Fautomations%2Fdashboard%2Fdashboard_automatica_movimento.yaml)
+
+**[Importa direttamente in Home Assistant](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2Fluigi-regolo%2Fautomazioni-home-assistant%2Fblob%2Fmain%2Fautomations%2Fdashboard%2Fdashboard_automatica_movimento.yaml)**
+
+**Importazione alternativa:** copia il **[link GitHub dell'automazione](https://github.com/luigi-regolo/automazioni-home-assistant/blob/main/automations/dashboard/dashboard_automatica_movimento.yaml)** e incollalo in **Impostazioni → Automazioni e scene → Progetti → Importa progetto**.
+
+> **Da verificare prima della condivisione su TikTok.** Dopo l'importazione seleziona il sensore, l'aiutante e inserisci esattamente il testo di una delle opzioni esistenti. Per ogni ambiente si può creare una distinta automazione dal medesimo progetto. Il comportamento visivo dipende dalla dashboard configurata dall'utente.
+
 ### Dopo l'importazione
 
 1. Apri il progetto appena importato e scegli **Crea automazione**.
