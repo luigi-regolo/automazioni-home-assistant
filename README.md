@@ -192,6 +192,24 @@ Dopo l'importazione seleziona il sensore. Nel campo **Notifiche da inviare** con
 
 > **Da testare prima della condivisione su TikTok.** Dopo l'importazione, seleziona il sensore e configura nell'editor l'azione del termostato con un preset realmente supportato. AUTO 13 è complementare ad AUTO 12: per utilizzarle insieme scegli lo stesso sensore e lo stesso termostato. Questa automazione applica un preset predefinito, **non** ripristina necessariamente lo stato precedente all'apertura. Il timer di un minuto riparte se la finestra si riapre.
 
+### 14 — Avviso climatizzazione attiva
+
+**Cosa fa:** quando uno dei climatizzatori o termostati selezionati inizia a **riscaldare, raffreddare o deumidificare** per almeno **5 secondi**, invia una notifica sullo smartphone. Nessuna condizione aggiuntiva.
+
+**Requisiti:** almeno un'entità `climate` che esponga l'attributo `hvac_action` e uno smartphone con l'app ufficiale Home Assistant.
+
+**Titolo precompilato:** «Riscaldamento acceso»
+
+**Messaggio precompilato:** «Le valvole si sono attivate e il riscaldamento è partito»
+
+[![Importa in Home Assistant](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2Fluigi-regolo%2Fautomazioni-home-assistant%2Fblob%2Fmain%2Fautomations%2Fclima%2Favviso_climatizzazione_attiva.yaml)
+
+**[Importa direttamente in Home Assistant](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2Fluigi-regolo%2Fautomazioni-home-assistant%2Fblob%2Fmain%2Fautomations%2Fclima%2Favviso_climatizzazione_attiva.yaml)**
+
+**Importazione alternativa:** copia il **[link GitHub dell'automazione](https://github.com/luigi-regolo/automazioni-home-assistant/blob/main/automations/clima/avviso_climatizzazione_attiva.yaml)** e incollalo in **Impostazioni → Automazioni e scene → Progetti → Importa progetto**.
+
+> **Da testare prima di condividerla su TikTok.** Il testo originale descrive soltanto il riscaldamento, mentre il trigger include anche raffreddamento e deumidificazione: personalizza titolo e messaggio o scegli un testo neutro per evitare notifiche fuorvianti. La notifica viene generata solo se l'integrazione aggiorna correttamente `hvac_action`; alcuni dispositivi non lo espongono.
+
 ### Dopo l'importazione
 
 1. Apri il progetto appena importato e scegli **Crea automazione**.
