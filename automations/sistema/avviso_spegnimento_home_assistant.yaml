@@ -1,0 +1,46 @@
+blueprint:
+  name: "Avviso spegnimento Home Assistant"
+  description: >-
+    Quando Home Assistant inizia lo spegnimento, prova a inviare una
+    notifica al dispositivo mobile selezionato. Il messaggio e il
+    titolo possono essere personalizzati. Funziona solo se Home
+    Assistant e il sistema di notifiche restano disponibili durante
+    lo spegnimento. Non avvisa in modo affidabile di crash, blackout
+    o problemi di rete. Non sostituisce un monitoraggio esterno.
+  domain: automation
+  author: luigi-regolo
+  input:
+    smartphone:
+      name: Smartphone da notificare
+      description: >-
+        Seleziona un dispositivo con l'app ufficiale Home Assistant
+        e le notifiche abilitate.
+      selector:
+        device:
+          filter:
+            - integration: mobile_app
+    titolo_notifica:
+      name: Titolo della notifica
+      default: "Server di casa"
+      selector:
+        text: {}
+    messaggio_notifica:
+      name: Messaggio della notifica
+      default: "Home Assistant si sta spegnendo"
+      selector:
+        text: {}
+
+triggers:
+  - trigger: homeassistant
+    event: shutdown
+
+conditions: []
+
+actions:
+  - domain: mobile_app
+    type: notify
+    device_id: !input smartphone
+    title: !input titolo_notifica
+    message: !input messaggio_notifica
+
+mode: single
