@@ -58,10 +58,26 @@ Dopo l'importazione seleziona il sensore. Nel campo **Notifiche da inviare** con
 
 > **Stato:** versione da testare in Home Assistant prima di condividerla su TikTok. La notifica dipende dalla disponibilità delle integrazioni e della connessione, e non sostituisce un sistema di protezione antiallagamento.
 
+### 05 — Controllo automatico umidità
+
+**Cosa fa:** se l'umidità supera **65% per 2 minuti** (valori modificabili), imposta il climatizzatore in modalità **dry** e invia una notifica allo smartphone. Non ci sono condizioni aggiuntive né spegnimento automatico.
+
+**Requisiti:** sensore di umidità, entità climatizzatore compatibile con la modalità `dry` e smartphone con app ufficiale Home Assistant configurata.
+
+**Messaggio precompilato:** «L’umidità è troppo alta e il climatizzatore è stato acceso in modalità deumidificazione.»
+
+[![Importa in Home Assistant](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2Fluigi-regolo%2Fautomazioni-home-assistant%2Fblob%2Fmain%2Fautomations%2Fclima%2Fcontrollo_umidita_deumidificazione.yaml)
+
+**[Importa direttamente in Home Assistant](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2Fluigi-regolo%2Fautomazioni-home-assistant%2Fblob%2Fmain%2Fautomations%2Fclima%2Fcontrollo_umidita_deumidificazione.yaml)**
+
+**Importazione alternativa:** copia il **[link GitHub dell'automazione](https://github.com/luigi-regolo/automazioni-home-assistant/blob/main/automations/clima/controllo_umidita_deumidificazione.yaml)** e incollalo in **Impostazioni → Automazioni e scene → Progetti → Importa progetto**.
+
+> **Da verificare prima della condivisione su TikTok.** La modalità `dry` non è supportata da tutti i climatizzatori e l'azione non imposta un livello di umidità né spegne il dispositivo automaticamente. Il trigger scatta solo al superamento della soglia; un riavvio di Home Assistant durante i 2 minuti azzera l'attesa. È opportuno testare la notifica e la modalità HVAC prima di abilitare la nuova automazione.
+
 ### Dopo l'importazione
 
 1. Apri il progetto appena importato e scegli **Crea automazione**.
-2. Seleziona i sensori e la luce richiesti dall'automazione.
+2. Seleziona i dispositivi richiesti dall'automazione e configura eventuali messaggi.
 3. Salva l'automazione.
 
 > L'importazione non seleziona automaticamente i dispositivi e non crea una nuova automazione finché non completi i passaggi. Verifica il comportamento prima dell'uso quotidiano.
