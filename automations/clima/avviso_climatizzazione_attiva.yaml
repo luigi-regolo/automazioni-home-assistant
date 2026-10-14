@@ -1,0 +1,71 @@
+blueprint:
+  name: "Avviso climatizzazione attiva"
+  description: >-
+    Invia una notifica quando uno dei climatizzatori o termostati scelti
+    avvia il riscaldamento, il raffreddamento o la deumidificazione per
+    almeno 5 secondi. È necessario che l'entità climate esponga
+    l'attributo hvac_action con il valore corrispondente.
+    Il titolo e il testo originali fanno riferimento al solo
+    riscaldamento: personalizzali per gli altri tipi di attività.
+  domain: automation
+  author: luigi-regolo
+  input:
+    climatizzatori:
+      name: Climatizzatori o termostati
+      description: >-
+        Seleziona uno o più dispositivi climate che espongono
+        l'attributo hvac_action.
+      selector:
+        entity:
+          multiple: true
+          filter:
+            - domain: climate
+    smartphone:
+      name: Smartphone da notificare
+      description: Seleziona lo smartphone con l'app Home Assistant.
+      selector:
+        device:
+          filter:
+            - integration: mobile_app
+    titolo_notifica:
+      name: Titolo della notifica
+      default: "Riscaldamento acceso"
+      selector:
+        text: {}
+    messaggio_notifica:
+      name: Messaggio della notifica
+      default: "Le valvole si sono attivate e il riscaldamento è partito"
+      selector:
+        text: {}
+
+triggers:
+  - trigger: state
+    entity_id: !input climatizzatori
+    attribute: hvac_action
+    to: "heating"
+    for:
+      seconds: 5
+  - trigger: state
+    entity_id: !input climatizzatori
+    attribute: hvac_action
+    to: "drying"
+    for:
+      seconds: 5
+  - trigger: state
+    entity_id: !input climatizzatori
+    attribute: hvac_action
+    to: "cooling"
+    for:
+      seconds: 5
+
+conditions: []
+
+actions:
+  - domain: mobile_app
+    type: notify
+    device_id: !input smartphone
+    title: !input titolo_notifica
+    message: !input messaggio_notifica
+
+mode: queued
+max: 10
