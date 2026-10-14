@@ -1,0 +1,37 @@
+blueprint:
+  name: "Accendi o spegni una presa con tag NFC"
+  description: >-
+    Quando viene scansionato il tag NFC scelto, inverte lo stato della
+    presa smart selezionata: se e accesa la spegne, se e spenta la accende.
+    Configura l'attivazione Tag tramite l'interfaccia grafica e scegli
+    la tua presa. Non sono previste condizioni o azioni aggiuntive.
+    Non usare prese non certificate per il carico collegato, in
+    particolare apparecchi ad alta potenza.
+  domain: automation
+  author: luigi-regolo
+  input:
+    scansione_tag:
+      name: Scansione del tag NFC
+      description: >-
+        Premi Aggiungi attivazione, scegli Tag e seleziona
+        una tua etichetta NFC gia configurata in Home Assistant.
+      selector:
+        trigger: {}
+    presa_smart:
+      name: Presa smart da controllare
+      description: Seleziona l'entita switch della presa da accendere o spegnere.
+      selector:
+        entity:
+          filter:
+            - domain: switch
+
+triggers: !input scansione_tag
+
+conditions: []
+
+actions:
+  - action: switch.toggle
+    target:
+      entity_id: !input presa_smart
+
+mode: single
