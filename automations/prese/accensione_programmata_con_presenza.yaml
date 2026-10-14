@@ -1,9 +1,11 @@
 blueprint:
-  name: "Accensione programmata presa smart con presenza"
+  name: "Accensione programmata presa macchina del caffè"
   description: >-
-    Dal lunedì al venerdì, all'orario configurato (predefinito 06:45),
-    accende la presa smart soltanto se la persona o il dispositivo
-    scelto risulta a casa. Non spegne automaticamente la presa.
+    Pensata per alimentare una macchina del caffè collegata a una presa
+    smart dal lunedì al venerdì, all'orario configurato (predefinito 07:00),
+    soltanto se la persona o il dispositivo scelto risulta a casa.
+    Accende la presa, ma non garantisce che la macchina avvii la preparazione.
+    Non spegne automaticamente la presa.
     Se la posizione non è aggiornata, il risultato potrebbe non
     riflettere la presenza reale. Verifica che l'apparecchio collegato
     possa essere alimentato in sicurezza senza sorveglianza.
@@ -12,8 +14,8 @@ blueprint:
   input:
     orario_accensione:
       name: Orario di accensione
-      description: Ora di accensione nei giorni dal lunedì al venerdì.
-      default: "06:45:00"
+      description: Orario di accensione della presa, dal lunedì al venerdì.
+      default: "07:00:00"
       selector:
         time: {}
     entita_presenza:
@@ -27,8 +29,8 @@ blueprint:
             - domain: person
             - domain: device_tracker
     presa_smart:
-      name: Presa smart
-      description: Seleziona la presa da accendere.
+      name: Presa macchina del caffè
+      description: Seleziona la presa smart collegata alla macchina del caffè.
       selector:
         entity:
           filter:
