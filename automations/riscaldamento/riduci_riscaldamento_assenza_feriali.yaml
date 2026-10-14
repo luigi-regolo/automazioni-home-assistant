@@ -1,0 +1,54 @@
+blueprint:
+  name: "Riduci riscaldamento quando sei fuori casa (lun-ven)"
+  description: >-
+    Quando la persona selezionata risulta fuori casa per 5 minuti,
+    dal lunedi al venerdi tra le 00:00 e le 23:59, esegue
+    l'azione del termostato scelta nell'editor.
+    Per replicare l'esempio, imposta sui termostati compatibili
+    il preset Fuori casa (o la relativa modalita equivalente).
+    I nomi dei preset cambiano da un'integrazione all'altra.
+    L'assenza basata su GPS puo produrre falsi rilevamenti.
+    Non ripristina automaticamente il riscaldamento al rientro.
+  domain: automation
+  author: luigi-regolo
+  input:
+    persona:
+      name: Persona da monitorare
+      description: >-
+        Seleziona la persona che deve risultare fuori casa
+        per almeno 5 minuti.
+      selector:
+        entity:
+          filter:
+            - domain: person
+    azione_termostati:
+      name: Preset dei termostati
+      description: >-
+        Aggiungi l'azione Imposta modalita preimpostata termostato,
+        seleziona uno o piu termostati compatibili e imposta
+        il preset Fuori casa oppure quello equivalente.
+        Non lasciare vuota questa sezione.
+      selector:
+        action: {}
+
+triggers:
+  - trigger: state
+    entity_id: !input persona
+    to: "not_home"
+    for:
+      minutes: 5
+
+conditions:
+  - condition: time
+    after: "00:00:00"
+    before: "23:59:00"
+    weekday:
+      - mon
+      - tue
+      - wed
+      - thu
+      - fri
+
+actions: !input azione_termostati
+
+mode: single
