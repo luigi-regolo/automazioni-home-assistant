@@ -56,7 +56,7 @@ Una raccolta di automazioni pronte da importare in **Home Assistant**. Scegli i 
 
 Dopo l'importazione seleziona il sensore. Nel campo **Notifiche da inviare** configura almeno un'azione di notifica sul tuo telefono e, se disponibile, un annuncio Alexa. Messaggio demo suggerito: **Attenzione. Rilevata presenza di acqua. Controlla subito.**
 
-> **Stato:** versione da testare in Home Assistant prima di condividerla su TikTok. La notifica dipende dalla disponibilità delle integrazioni e della connessione, e non sostituisce un sistema di protezione antiallagamento.
+> **Nota:** La notifica dipende dalla disponibilità delle integrazioni e della connessione, e non sostituisce un sistema di protezione antiallagamento.
 
 ### 05 — Controllo automatico umidità
 
@@ -72,7 +72,7 @@ Dopo l'importazione seleziona il sensore. Nel campo **Notifiche da inviare** con
 
 **Importazione alternativa:** copia il **[link GitHub dell'automazione](https://github.com/luigi-regolo/automazioni-home-assistant/blob/main/automations/clima/controllo_umidita_deumidificazione.yaml)** e incollalo in **Impostazioni → Automazioni e scene → Progetti → Importa progetto**.
 
-> **Da verificare prima della condivisione su TikTok.** La modalità `dry` non è supportata da tutti i climatizzatori e l'azione non imposta un livello di umidità né spegne il dispositivo automaticamente. Il trigger scatta solo al superamento della soglia; un riavvio di Home Assistant durante i 2 minuti azzera l'attesa. È opportuno testare la notifica e la modalità HVAC prima di abilitare la nuova automazione.
+> **Nota:** La modalità `dry` non è supportata da tutti i climatizzatori e l'azione non imposta un livello di umidità né spegne il dispositivo automaticamente. Il trigger scatta solo al superamento della soglia; un riavvio di Home Assistant durante i 2 minuti azzera l'attesa. È opportuno testare la notifica e la modalità HVAC prima di abilitare la nuova automazione.
 
 ### 06 — Spegnimento automatico deumidificazione
 
@@ -88,7 +88,7 @@ Dopo l'importazione seleziona il sensore. Nel campo **Notifiche da inviare** con
 
 **Importazione alternativa:** copia il **[link GitHub dell'automazione](https://github.com/luigi-regolo/automazioni-home-assistant/blob/main/automations/clima/spegnimento_automatico_deumidificazione.yaml)** e incollalo in **Impostazioni → Automazioni e scene → Progetti → Importa progetto**.
 
-> **Da testare prima di pubblicarla su TikTok.** Questa automazione è complementare ad AUTO 05. Se usata con AUTO 05, seleziona lo stesso sensore e climatizzatore, e mantieni la soglia di spegnimento inferiore a quella di accensione. La notifica viene inviata dopo il comando, senza verifica dello stato effettivo del climatizzatore.
+> **Nota:** Questa automazione è complementare ad AUTO 05. Se usata con AUTO 05, seleziona lo stesso sensore e climatizzatore, e mantieni la soglia di spegnimento inferiore a quella di accensione. La notifica viene inviata dopo il comando, senza verifica dello stato effettivo del climatizzatore.
 
 ### 07 — Dashboard automatica in base al movimento
 
@@ -102,7 +102,7 @@ Dopo l'importazione seleziona il sensore. Nel campo **Notifiche da inviare** con
 
 **Importazione alternativa:** copia il **[link GitHub dell'automazione](https://github.com/luigi-regolo/automazioni-home-assistant/blob/main/automations/dashboard/dashboard_automatica_movimento.yaml)** e incollalo in **Impostazioni → Automazioni e scene → Progetti → Importa progetto**.
 
-> **Da verificare prima della condivisione su TikTok.** Dopo l'importazione seleziona il sensore, l'aiutante e inserisci esattamente il testo di una delle opzioni esistenti. Per ogni ambiente si può creare una distinta automazione dal medesimo progetto. Il comportamento visivo dipende dalla dashboard configurata dall'utente.
+> **Nota:** Dopo l'importazione seleziona il sensore, l'aiutante e inserisci esattamente il testo di una delle opzioni esistenti. Per ogni ambiente si può creare una distinta automazione dal medesimo progetto. Il comportamento visivo dipende dalla dashboard configurata dall'utente.
 
 ### 08 — Accendi o spegni una presa con tag NFC
 
@@ -116,7 +116,7 @@ Dopo l'importazione seleziona il sensore. Nel campo **Notifiche da inviare** con
 
 **Importazione alternativa:** copia il **[link GitHub dell'automazione](https://github.com/luigi-regolo/automazioni-home-assistant/blob/main/automations/nfc/toggle_presa_con_tag.yaml)** e incollalo in **Impostazioni → Automazioni e scene → Progetti → Importa progetto**.
 
-> **Da testare prima della condivisione su TikTok.** Durante la creazione dell'automazione, nel campo **Scansione del tag NFC** scegli **Tag** e seleziona la tua etichetta; nel campo **Presa smart** scegli lo switch. Verifica che il carico elettrico sia compatibile con la presa. Il comando cambia l'alimentazione ma non garantisce l'avvio o l'arresto sicuro di un elettrodomestico. Evita il controllo di apparecchi ad alta potenza senza dispositivi adeguati.
+> **Nota:** Durante la creazione dell'automazione, nel campo **Scansione del tag NFC** scegli **Tag** e seleziona la tua etichetta; nel campo **Presa smart** scegli lo switch. Verifica che il carico elettrico sia compatibile con la presa. Il comando cambia l'alimentazione ma non garantisce l'avvio o l'arresto sicuro di un elettrodomestico. Evita il controllo di apparecchi ad alta potenza senza dispositivi adeguati.
 
 ### 09 — Accensione programmata macchina del caffè
 
@@ -130,7 +130,7 @@ Dopo l'importazione seleziona il sensore. Nel campo **Notifiche da inviare** con
 
 **Importazione alternativa:** copia il **[link GitHub dell'automazione](https://github.com/luigi-regolo/automazioni-home-assistant/blob/main/automations/prese/accensione_programmata_con_presenza.yaml)** e incollalo in **Impostazioni → Automazioni e scene → Progetti → Importa progetto**.
 
-> **Da testare prima della condivisione su TikTok.** Utilizza solo apparecchi che supportano l'accensione automatica senza sorveglianza e una presa adeguata alla potenza assorbita. La presenza dipende dall'aggiornamento del tracciamento; se risulta erroneamente `home`, la presa potrebbe accendersi anche senza nessuno in casa. L'automazione non spegne la presa.
+> **Nota:** Utilizza solo apparecchi che supportano l'accensione automatica senza sorveglianza e una presa adeguata alla potenza assorbita. La presenza dipende dall'aggiornamento del tracciamento; se risulta erroneamente `home`, la presa potrebbe accendersi anche senza nessuno in casa. L'automazione non spegne la presa.
 
 ### 10 — Avviso spegnimento Home Assistant
 
@@ -148,7 +148,7 @@ Dopo l'importazione seleziona il sensore. Nel campo **Notifiche da inviare** con
 
 **Importazione alternativa:** copia il **[link GitHub dell'automazione](https://github.com/luigi-regolo/automazioni-home-assistant/blob/main/automations/sistema/avviso_spegnimento_home_assistant.yaml)** e incollalo in **Impostazioni → Automazioni e scene → Progetti → Importa progetto**.
 
-> **Da testare prima della condivisione su TikTok.** L'avviso è un tentativo di notifica, non una conferma della consegna. Lo spegnimento lascia un tempo limitato alle automazioni e il messaggio potrebbe non arrivare. Crash, blackout, perdita di rete e interruzioni improvvise non sono rilevabili in modo affidabile da Home Assistant mentre è offline. Per il controllo della disponibilità serve un monitoraggio esterno. Evita riavvii solo per provare il progetto: verifica l'invio durante una manutenzione programmata.
+> **Nota:** L'avviso è un tentativo di notifica, non una conferma della consegna. Lo spegnimento lascia un tempo limitato alle automazioni e il messaggio potrebbe non arrivare. Crash, blackout, perdita di rete e interruzioni improvvise non sono rilevabili in modo affidabile da Home Assistant mentre è offline. Per il controllo della disponibilità serve un monitoraggio esterno. Evita riavvii solo per provare il progetto: verifica l'invio durante una manutenzione programmata.
 
 ### 11 — Apertura programmata tapparella
 
@@ -162,7 +162,7 @@ Dopo l'importazione seleziona il sensore. Nel campo **Notifiche da inviare** con
 
 **Importazione alternativa:** copia il **[link GitHub dell'automazione](https://github.com/luigi-regolo/automazioni-home-assistant/blob/main/automations/tapparelle/apertura_programmata_tapparella.yaml)** e incollalo in **Impostazioni → Automazioni e scene → Progetti → Importa progetto**.
 
-> **Da verificare prima di condividerla su TikTok.** Si attiva anche nei giorni festivi che cadono tra lunedì e venerdì e indipendentemente dalla presenza di persone. Non rileva la sveglia effettiva, né chiude automaticamente la tapparella. Verifica il corretto funzionamento e la sicurezza del movimento prima di abilitarla.
+> **Nota:** Si attiva anche nei giorni festivi che cadono tra lunedì e venerdì e indipendentemente dalla presenza di persone. Non rileva la sveglia effettiva, né chiude automaticamente la tapparella. Verifica il corretto funzionamento e la sicurezza del movimento prima di abilitarla.
 
 ### 12 — Sospendi riscaldamento con finestra aperta
 
@@ -176,7 +176,7 @@ Dopo l'importazione seleziona il sensore. Nel campo **Notifiche da inviare** con
 
 **Importazione alternativa:** copia il **[link GitHub dell'automazione](https://github.com/luigi-regolo/automazioni-home-assistant/blob/main/automations/riscaldamento/riduzione_riscaldamento_finestra_aperta.yaml)** e incollalo in **Impostazioni → Automazioni e scene → Progetti → Importa progetto**.
 
-> **Da testare prima della condivisione su TikTok.** Dopo l'importazione scegli il sensore finestra e configura l'azione del termostato usando l'editor grafico, selezionando il preset effettivamente disponibile. "Protezione antigelo" non equivale necessariamente a spegnimento completo; la temperatura minima dipende dal termostato. Se il preset non è supportato, non usarlo. Alla richiusura della finestra il riscaldamento non viene ripristinato automaticamente.
+> **Nota:** Dopo l'importazione scegli il sensore finestra e configura l'azione del termostato usando l'editor grafico, selezionando il preset effettivamente disponibile. "Protezione antigelo" non equivale necessariamente a spegnimento completo; la temperatura minima dipende dal termostato. Se il preset non è supportato, non usarlo. Alla richiusura della finestra il riscaldamento non viene ripristinato automaticamente.
 
 ### 13 — Ripristina riscaldamento alla chiusura della finestra
 
@@ -190,7 +190,7 @@ Dopo l'importazione seleziona il sensore. Nel campo **Notifiche da inviare** con
 
 **Importazione alternativa:** copia il **[link GitHub dell'automazione](https://github.com/luigi-regolo/automazioni-home-assistant/blob/main/automations/riscaldamento/ripristino_riscaldamento_finestra_chiusa.yaml)** e incollalo in **Impostazioni → Automazioni e scene → Progetti → Importa progetto**.
 
-> **Da testare prima della condivisione su TikTok.** Dopo l'importazione, seleziona il sensore e configura nell'editor l'azione del termostato con un preset realmente supportato. AUTO 13 è complementare ad AUTO 12: per utilizzarle insieme scegli lo stesso sensore e lo stesso termostato. Questa automazione applica un preset predefinito, **non** ripristina necessariamente lo stato precedente all'apertura. Il timer di un minuto riparte se la finestra si riapre.
+> **Nota:** Dopo l'importazione, seleziona il sensore e configura nell'editor l'azione del termostato con un preset realmente supportato. AUTO 13 è complementare ad AUTO 12: per utilizzarle insieme scegli lo stesso sensore e lo stesso termostato. Questa automazione applica un preset predefinito, **non** ripristina necessariamente lo stato precedente all'apertura. Il timer di un minuto riparte se la finestra si riapre.
 
 ### 14 — Avviso valvole riscaldamento attive
 
@@ -208,7 +208,7 @@ Dopo l'importazione seleziona il sensore. Nel campo **Notifiche da inviare** con
 
 **Importazione alternativa:** copia il **[link GitHub dell'automazione](https://github.com/luigi-regolo/automazioni-home-assistant/blob/main/automations/clima/avviso_climatizzazione_attiva.yaml)** e incollalo in **Impostazioni → Automazioni e scene → Progetti → Importa progetto**.
 
-> **Da testare prima di condividerla su TikTok.** L'automazione controlla solo il riscaldamento (`hvac_action: heating`), non il raffreddamento o la deumidificazione. Alcune valvole non espongono `hvac_action` o non lo aggiornano in modo affidabile. La notifica conferma lo stato riportato dall'integrazione, non necessariamente l'effettiva apertura fisica della valvola.
+> **Nota:** L'automazione controlla solo il riscaldamento (`hvac_action: heating`), non il raffreddamento o la deumidificazione. Alcune valvole non espongono `hvac_action` o non lo aggiornano in modo affidabile. La notifica conferma lo stato riportato dall'integrazione, non necessariamente l'effettiva apertura fisica della valvola.
 
 ### 15 — Avviso valvole riscaldamento spente
 
@@ -226,7 +226,7 @@ Dopo l'importazione seleziona il sensore. Nel campo **Notifiche da inviare** con
 
 **Importazione alternativa:** copia il **[link GitHub dell'automazione](https://github.com/luigi-regolo/automazioni-home-assistant/blob/main/automations/clima/avviso_riscaldamento_spento.yaml)** e incollalo in **Impostazioni → Automazioni e scene → Progetti → Importa progetto**.
 
-> **Da testare prima di condividerla su TikTok.** Alcuni dispositivi passano da `heating` a `idle` invece di `off`: in tal caso questa automazione non invia la notifica. Controlla gli stati effettivamente esposti dalla tua integrazione. La notifica riflette lo stato riportato da Home Assistant, non necessariamente la posizione fisica della valvola.
+> **Nota:** Alcuni dispositivi passano da `heating` a `idle` invece di `off`: in tal caso questa automazione non invia la notifica. Controlla gli stati effettivamente esposti dalla tua integrazione. La notifica riflette lo stato riportato da Home Assistant, non necessariamente la posizione fisica della valvola.
 
 ### 16 — Riduci riscaldamento quando sei fuori casa (lun–ven)
 
@@ -240,7 +240,7 @@ Dopo l'importazione seleziona il sensore. Nel campo **Notifiche da inviare** con
 
 **Importazione alternativa:** copia il **[link GitHub dell'automazione](https://github.com/luigi-regolo/automazioni-home-assistant/blob/main/automations/riscaldamento/riduci_riscaldamento_assenza_feriali.yaml)** e incollalo in **Impostazioni → Automazioni e scene → Progetti → Importa progetto**.
 
-> **Da testare prima della condivisione su TikTok.** Nella configurazione dell'automazione seleziona la persona e aggiungi l'azione per i termostati con il preset supportato. Il tracciamento GPS può generare falsi stati di assenza; il ritardo di 5 minuti non li elimina completamente. La condizione termina alle 23:59, come nell'esempio. Nessun intervento viene eseguito quando si torna a casa.
+> **Nota:** Nella configurazione dell'automazione seleziona la persona e aggiungi l'azione per i termostati con il preset supportato. Il tracciamento GPS può generare falsi stati di assenza; il ritardo di 5 minuti non li elimina completamente. La condizione termina alle 23:59, come nell'esempio. Nessun intervento viene eseguito quando si torna a casa.
 
 ### 17 — Riattiva riscaldamento quando rientri a casa (lun–ven)
 
@@ -254,7 +254,7 @@ Dopo l'importazione seleziona il sensore. Nel campo **Notifiche da inviare** con
 
 **Importazione alternativa:** copia il **[link GitHub dell'automazione](https://github.com/luigi-regolo/automazioni-home-assistant/blob/main/automations/riscaldamento/ripristina_riscaldamento_rientro_feriali.yaml)** e incollalo in **Impostazioni → Automazioni e scene → Progetti → Importa progetto**.
 
-> **Da testare prima della condivisione su TikTok.** Se usata insieme ad AUTO 16, seleziona la stessa entità persona e gli stessi termostati. La presenza GPS può generare falsi rilevamenti: 15 secondi non garantiscono che il rientro sia reale. La modalità Pianificazione deve essere supportata dal termostato. L'automazione applica un preset specifico, non recupera automaticamente quello precedente.
+> **Nota:** Se usata insieme ad AUTO 16, seleziona la stessa entità persona e gli stessi termostati. La presenza GPS può generare falsi rilevamenti: 15 secondi non garantiscono che il rientro sia reale. La modalità Pianificazione deve essere supportata dal termostato. L'automazione applica un preset specifico, non recupera automaticamente quello precedente.
 
 ### Dopo l'importazione
 
