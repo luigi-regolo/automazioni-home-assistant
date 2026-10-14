@@ -1,6 +1,18 @@
 # Automazioni pronte per Home Assistant
 
-Una raccolta di automazioni pronte da importare in **Home Assistant**. Scegli i tuoi dispositivi e salva: non serve copiare codice YAML o installare HACS.
+Una raccolta di automazioni pronte da importare in **Home Assistant**. Nessun codice YAML da copiare e nessuna installazione HACS richiesta.
+
+## Come iniziare
+
+1. **Scegli un'automazione** dal catalogo qui sotto.
+2. **Premi "Importa in Home Assistant"** per aggiungerla alla tua installazione.
+3. **Crea la tua automazione**, seleziona i dispositivi richiesti e salva.
+
+Tutto direttamente dall'interfaccia di Home Assistant.
+
+**Nota:** l'importazione aggiunge il progetto, ma non crea automaticamente un'automazione attiva. Prima di utilizzarla, configura i tuoi dispositivi e verifica che funzioni correttamente.
+
+---
 
 ## Automazioni disponibili
 
@@ -287,14 +299,6 @@ Dopo l'importazione seleziona il sensore. Nel campo **Notifiche da inviare** con
 **Importazione alternativa:** copia il **[link GitHub dell'automazione](https://github.com/luigi-regolo/automazioni-home-assistant/blob/main/automations/riscaldamento/ripristina_riscaldamento_rientro_weekend.yaml)** e incollalo in **Impostazioni → Automazioni e scene → Progetti → Importa progetto**.
 
 > **Nota:** il rilevamento della presenza dipende dagli aggiornamenti della posizione e può generare falsi rilevamenti. La modalità Pianificazione deve essere supportata dai termostati. L'automazione applica il preset selezionato, senza recuperare necessariamente la modalità precedentemente attiva.
-
-### Dopo l'importazione
-
-1. Apri il progetto appena importato e scegli **Crea automazione**.
-2. Seleziona i dispositivi richiesti dall'automazione e configura eventuali messaggi.
-3. Salva l'automazione.
-
-> L'importazione non seleziona automaticamente i dispositivi e non crea una nuova automazione finché non completi i passaggi. Verifica il comportamento prima dell'uso quotidiano.
 
 ## Aggiornamenti e sicurezza
 
