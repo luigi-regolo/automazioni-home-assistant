@@ -1,3 +1,5 @@
+<a href="https://www.tiktok.com/@luigi.regolo" title="Segui i tutorial Home Assistant su TikTok"><img src="assets/tiktok-segui.svg" alt="TikTok | Segui" width="116" height="22"></a>
+
 # Automazioni pronte per Home Assistant
 
 Una raccolta di automazioni pronte da importare in **Home Assistant**. Nessun codice YAML da copiare e nessuna installazione HACS richiesta.
