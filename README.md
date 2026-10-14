@@ -300,6 +300,30 @@ Dopo l'importazione seleziona il sensore. Nel campo **Notifiche da inviare** con
 
 > **Nota:** il rilevamento della presenza dipende dagli aggiornamenti della posizione e può generare falsi rilevamenti. La modalità Pianificazione deve essere supportata dai termostati. L'automazione applica il preset selezionato, senza recuperare necessariamente la modalità precedentemente attiva.
 
+### 20 — Apri Home Assistant su tablet con rilevamento presenza
+
+**Cosa fa:** quando il sensore di presenza selezionato rileva occupazione per **1 secondo**, Home Assistant verifica che la persona o il dispositivo scelto risulti **in casa**. Se la condizione è soddisfatta, invia una notifica al tablet con messaggio **Apri** e titolo **Dashboard**.
+
+**Funzionamento:**
+
+1. Rileva la presenza tramite il sensore configurato.
+2. Verifica che la persona o il dispositivo selezionato sia in casa.
+3. Invia una notifica al tablet.
+
+**Requisiti:** un sensore di presenza compatibile, una persona o un dispositivo tracciato come presente in casa e un tablet configurato per ricevere notifiche tramite Home Assistant.
+
+**Titolo precompilato:** «Dashboard»
+
+**Messaggio precompilato:** «Apri»
+
+[![Importa in Home Assistant](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2Fluigi-regolo%2Fautomazioni-home-assistant%2Fblob%2Fmain%2Fautomations%2Fdashboard%2Fapri_home_assistant_tablet.yaml)
+
+**[Importa direttamente in Home Assistant](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2Fluigi-regolo%2Fautomazioni-home-assistant%2Fblob%2Fmain%2Fautomations%2Fdashboard%2Fapri_home_assistant_tablet.yaml)**
+
+**Importazione alternativa:** copia il **[link GitHub dell'automazione](https://github.com/luigi-regolo/automazioni-home-assistant/blob/main/automations/dashboard/apri_home_assistant_tablet.yaml)** e incollalo in **Impostazioni → Automazioni e scene → Progetti → Importa progetto**.
+
+> **Nota:** questa automazione invia una notifica al tablet. L'apertura effettiva dell'app o della dashboard dipende dalla configurazione del tablet e dell'app Home Assistant sul dispositivo; la notifica da sola non garantisce l'apertura automatica.
+
 ## Aggiornamenti e sicurezza
 
 - I file sono esempi generici: non contengono credenziali, indirizzi o ID delle entità di una casa reale.
