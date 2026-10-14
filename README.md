@@ -150,6 +150,20 @@ Dopo l'importazione seleziona il sensore. Nel campo **Notifiche da inviare** con
 
 > **Da testare prima della condivisione su TikTok.** L'avviso è un tentativo di notifica, non una conferma della consegna. Lo spegnimento lascia un tempo limitato alle automazioni e il messaggio potrebbe non arrivare. Crash, blackout, perdita di rete e interruzioni improvvise non sono rilevabili in modo affidabile da Home Assistant mentre è offline. Per il controllo della disponibilità serve un monitoraggio esterno. Evita riavvii solo per provare il progetto: verifica l'invio durante una manutenzione programmata.
 
+### 11 — Apertura programmata tapparella
+
+**Cosa fa:** alle **07:00**, dal **lunedì al venerdì**, apre la tapparella selezionata. L'orario è modificabile. Nessuna condizione aggiuntiva.
+
+**Requisiti:** una tapparella motorizzata configurata in Home Assistant come entità `cover`. Il dispositivo deve supportare il comando di apertura.
+
+[![Importa in Home Assistant](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2Fluigi-regolo%2Fautomazioni-home-assistant%2Fblob%2Fmain%2Fautomations%2Ftapparelle%2Fapertura_programmata_tapparella.yaml)
+
+**[Importa direttamente in Home Assistant](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2Fluigi-regolo%2Fautomazioni-home-assistant%2Fblob%2Fmain%2Fautomations%2Ftapparelle%2Fapertura_programmata_tapparella.yaml)**
+
+**Importazione alternativa:** copia il **[link GitHub dell'automazione](https://github.com/luigi-regolo/automazioni-home-assistant/blob/main/automations/tapparelle/apertura_programmata_tapparella.yaml)** e incollalo in **Impostazioni → Automazioni e scene → Progetti → Importa progetto**.
+
+> **Da verificare prima di condividerla su TikTok.** Si attiva anche nei giorni festivi che cadono tra lunedì e venerdì e indipendentemente dalla presenza di persone. Non rileva la sveglia effettiva, né chiude automaticamente la tapparella. Verifica il corretto funzionamento e la sicurezza del movimento prima di abilitarla.
+
 ### Dopo l'importazione
 
 1. Apri il progetto appena importato e scegli **Crea automazione**.
