@@ -118,6 +118,20 @@ Dopo l'importazione seleziona il sensore. Nel campo **Notifiche da inviare** con
 
 > **Da testare prima della condivisione su TikTok.** Durante la creazione dell'automazione, nel campo **Scansione del tag NFC** scegli **Tag** e seleziona la tua etichetta; nel campo **Presa smart** scegli lo switch. Verifica che il carico elettrico sia compatibile con la presa. Il comando cambia l'alimentazione ma non garantisce l'avvio o l'arresto sicuro di un elettrodomestico. Evita il controllo di apparecchi ad alta potenza senza dispositivi adeguati.
 
+### 09 — Accensione programmata presa smart con presenza
+
+**Cosa fa:** alle **06:45**, dal **lunedì al venerdì**, accende una presa smart **solo se la persona o il dispositivo scelto risulta a casa**. L'orario è modificabile. Non è previsto uno spegnimento automatico.
+
+**Requisiti:** una presa smart con entità `switch` e un'entità `person` o `device_tracker` che rilevi lo stato `home`.
+
+[![Importa in Home Assistant](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2Fluigi-regolo%2Fautomazioni-home-assistant%2Fblob%2Fmain%2Fautomations%2Fprese%2Faccensione_programmata_con_presenza.yaml)
+
+**[Importa direttamente in Home Assistant](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2Fluigi-regolo%2Fautomazioni-home-assistant%2Fblob%2Fmain%2Fautomations%2Fprese%2Faccensione_programmata_con_presenza.yaml)**
+
+**Importazione alternativa:** copia il **[link GitHub dell'automazione](https://github.com/luigi-regolo/automazioni-home-assistant/blob/main/automations/prese/accensione_programmata_con_presenza.yaml)** e incollalo in **Impostazioni → Automazioni e scene → Progetti → Importa progetto**.
+
+> **Da testare prima della condivisione su TikTok.** Utilizza solo apparecchi che supportano l'accensione automatica senza sorveglianza e una presa adeguata alla potenza assorbita. La presenza dipende dall'aggiornamento del tracciamento; se risulta erroneamente `home`, la presa potrebbe accendersi anche senza nessuno in casa. L'automazione non spegne la presa.
+
 ### Dopo l'importazione
 
 1. Apri il progetto appena importato e scegli **Crea automazione**.
