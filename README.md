@@ -178,6 +178,20 @@ Dopo l'importazione seleziona il sensore. Nel campo **Notifiche da inviare** con
 
 > **Da testare prima della condivisione su TikTok.** Dopo l'importazione scegli il sensore finestra e configura l'azione del termostato usando l'editor grafico, selezionando il preset effettivamente disponibile. "Protezione antigelo" non equivale necessariamente a spegnimento completo; la temperatura minima dipende dal termostato. Se il preset non è supportato, non usarlo. Alla richiusura della finestra il riscaldamento non viene ripristinato automaticamente.
 
+### 13 — Ripristina riscaldamento alla chiusura della finestra
+
+**Cosa fa:** quando una finestra passa da **aperta a chiusa** e rimane chiusa per **1 minuto**, imposta sul termostato il preset scelto dall'utente. Per replicare l'esempio, seleziona **Pianificazione** se supportato. Nessuna condizione aggiuntiva.
+
+**Requisiti:** sensore finestra e termostato Home Assistant che supporti le modalità preimpostate. La modalità Pianificazione può avere un nome differente o non essere disponibile su altri termostati.
+
+[![Importa in Home Assistant](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2Fluigi-regolo%2Fautomazioni-home-assistant%2Fblob%2Fmain%2Fautomations%2Friscaldamento%2Fripristino_riscaldamento_finestra_chiusa.yaml)
+
+**[Importa direttamente in Home Assistant](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2Fluigi-regolo%2Fautomazioni-home-assistant%2Fblob%2Fmain%2Fautomations%2Friscaldamento%2Fripristino_riscaldamento_finestra_chiusa.yaml)**
+
+**Importazione alternativa:** copia il **[link GitHub dell'automazione](https://github.com/luigi-regolo/automazioni-home-assistant/blob/main/automations/riscaldamento/ripristino_riscaldamento_finestra_chiusa.yaml)** e incollalo in **Impostazioni → Automazioni e scene → Progetti → Importa progetto**.
+
+> **Da testare prima della condivisione su TikTok.** Dopo l'importazione, seleziona il sensore e configura nell'editor l'azione del termostato con un preset realmente supportato. AUTO 13 è complementare ad AUTO 12: per utilizzarle insieme scegli lo stesso sensore e lo stesso termostato. Questa automazione applica un preset predefinito, **non** ripristina necessariamente lo stato precedente all'apertura. Il timer di un minuto riparte se la finestra si riapre.
+
 ### Dopo l'importazione
 
 1. Apri il progetto appena importato e scegli **Crea automazione**.
