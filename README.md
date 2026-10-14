@@ -274,6 +274,20 @@ Dopo l'importazione seleziona il sensore. Nel campo **Notifiche da inviare** con
 
 > **Nota:** il rilevamento della presenza dipende dall'aggiornamento della posizione e può generare falsi rilevamenti. La modalità selezionata deve essere supportata dai termostati. L'automazione non ripristina automaticamente il riscaldamento quando rientri a casa.
 
+### 19 — Ripristina programmazione riscaldamento nel weekend
+
+**Cosa fa:** quando rientri a casa durante il weekend e risulti presente per almeno **5 minuti**, Home Assistant ripristina automaticamente la modalità **Pianificazione** sui termostati selezionati, riattivando la normale gestione programmata del riscaldamento.
+
+**Requisiti:** un'entità persona configurata in Home Assistant e uno o più termostati compatibili con le modalità preimpostate.
+
+[![Importa in Home Assistant](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2Fluigi-regolo%2Fautomazioni-home-assistant%2Fblob%2Fmain%2Fautomations%2Friscaldamento%2Fripristina_riscaldamento_rientro_weekend.yaml)
+
+**[Importa direttamente in Home Assistant](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2Fluigi-regolo%2Fautomazioni-home-assistant%2Fblob%2Fmain%2Fautomations%2Friscaldamento%2Fripristina_riscaldamento_rientro_weekend.yaml)**
+
+**Importazione alternativa:** copia il **[link GitHub dell'automazione](https://github.com/luigi-regolo/automazioni-home-assistant/blob/main/automations/riscaldamento/ripristina_riscaldamento_rientro_weekend.yaml)** e incollalo in **Impostazioni → Automazioni e scene → Progetti → Importa progetto**.
+
+> **Nota:** il rilevamento della presenza dipende dagli aggiornamenti della posizione e può generare falsi rilevamenti. La modalità Pianificazione deve essere supportata dai termostati. L'automazione applica il preset selezionato, senza recuperare necessariamente la modalità precedentemente attiva.
+
 ### Dopo l'importazione
 
 1. Apri il progetto appena importato e scegli **Crea automazione**.
