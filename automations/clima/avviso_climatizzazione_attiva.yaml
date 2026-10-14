@@ -1,20 +1,19 @@
 blueprint:
-  name: "Avviso climatizzazione attiva"
+  name: "Avviso valvole riscaldamento attive"
   description: >-
-    Invia una notifica quando uno dei climatizzatori o termostati scelti
-    avvia il riscaldamento, il raffreddamento o la deumidificazione per
-    almeno 5 secondi. È necessario che l'entità climate esponga
-    l'attributo hvac_action con il valore corrispondente.
-    Il titolo e il testo originali fanno riferimento al solo
-    riscaldamento: personalizzali per gli altri tipi di attività.
+    Invia una notifica quando una delle valvole termostatiche o dei
+    termostati selezionati indica riscaldamento attivo per almeno
+    5 secondi (attributo hvac_action uguale a heating).
+    Richiede entità climate che espongano questo attributo.
+    Non rileva raffreddamento o deumidificazione.
   domain: automation
   author: luigi-regolo
   input:
     climatizzatori:
-      name: Climatizzatori o termostati
+      name: Valvole o termostati del riscaldamento
       description: >-
-        Seleziona uno o più dispositivi climate che espongono
-        l'attributo hvac_action.
+        Seleziona una o più entità climate delle valvole termostatiche
+        o dei termostati che espongono hvac_action.
       selector:
         entity:
           multiple: true
@@ -43,18 +42,6 @@ triggers:
     entity_id: !input climatizzatori
     attribute: hvac_action
     to: "heating"
-    for:
-      seconds: 5
-  - trigger: state
-    entity_id: !input climatizzatori
-    attribute: hvac_action
-    to: "drying"
-    for:
-      seconds: 5
-  - trigger: state
-    entity_id: !input climatizzatori
-    attribute: hvac_action
-    to: "cooling"
     for:
       seconds: 5
 
