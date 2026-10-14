@@ -228,6 +228,20 @@ Dopo l'importazione seleziona il sensore. Nel campo **Notifiche da inviare** con
 
 > **Da testare prima di condividerla su TikTok.** Alcuni dispositivi passano da `heating` a `idle` invece di `off`: in tal caso questa automazione non invia la notifica. Controlla gli stati effettivamente esposti dalla tua integrazione. La notifica riflette lo stato riportato da Home Assistant, non necessariamente la posizione fisica della valvola.
 
+### 16 — Riduci riscaldamento quando sei fuori casa (lun–ven)
+
+**Cosa fa:** quando la persona selezionata risulta **fuori casa per 5 minuti**, dal **lunedì al venerdì** tra le **00:00 e le 23:59**, applica ai termostati il preset configurato nell'editor. Nell'esempio viene usato **Fuori casa**. Nessun ripristino automatico al rientro.
+
+**Requisiti:** un'entità `person` configurata e uno o più termostati che supportino le modalità preimpostate. Il nome del preset dipende dall'integrazione.
+
+[![Importa in Home Assistant](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2Fluigi-regolo%2Fautomazioni-home-assistant%2Fblob%2Fmain%2Fautomations%2Friscaldamento%2Friduci_riscaldamento_assenza_feriali.yaml)
+
+**[Importa direttamente in Home Assistant](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2Fluigi-regolo%2Fautomazioni-home-assistant%2Fblob%2Fmain%2Fautomations%2Friscaldamento%2Friduci_riscaldamento_assenza_feriali.yaml)**
+
+**Importazione alternativa:** copia il **[link GitHub dell'automazione](https://github.com/luigi-regolo/automazioni-home-assistant/blob/main/automations/riscaldamento/riduci_riscaldamento_assenza_feriali.yaml)** e incollalo in **Impostazioni → Automazioni e scene → Progetti → Importa progetto**.
+
+> **Da testare prima della condivisione su TikTok.** Nella configurazione dell'automazione seleziona la persona e aggiungi l'azione per i termostati con il preset supportato. Il tracciamento GPS può generare falsi stati di assenza; il ritardo di 5 minuti non li elimina completamente. La condizione termina alle 23:59, come nell'esempio. Nessun intervento viene eseguito quando si torna a casa.
+
 ### Dopo l'importazione
 
 1. Apri il progetto appena importato e scegli **Crea automazione**.
