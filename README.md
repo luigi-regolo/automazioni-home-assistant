@@ -118,11 +118,11 @@ Dopo l'importazione seleziona il sensore. Nel campo **Notifiche da inviare** con
 
 > **Da testare prima della condivisione su TikTok.** Durante la creazione dell'automazione, nel campo **Scansione del tag NFC** scegli **Tag** e seleziona la tua etichetta; nel campo **Presa smart** scegli lo switch. Verifica che il carico elettrico sia compatibile con la presa. Il comando cambia l'alimentazione ma non garantisce l'avvio o l'arresto sicuro di un elettrodomestico. Evita il controllo di apparecchi ad alta potenza senza dispositivi adeguati.
 
-### 09 — Accensione programmata presa smart con presenza
+### 09 — Accensione programmata macchina del caffè
 
-**Cosa fa:** alle **06:45**, dal **lunedì al venerdì**, accende una presa smart **solo se la persona o il dispositivo scelto risulta a casa**. L'orario è modificabile. Non è previsto uno spegnimento automatico.
+**Cosa fa:** alle **07:00**, dal **lunedì al venerdì**, accende la presa smart della macchina del caffè **solo se la persona o il dispositivo scelto risulta a casa**. L'orario è modificabile. Non è previsto uno spegnimento automatico né l'avvio garantito della preparazione del caffè.
 
-**Requisiti:** una presa smart con entità `switch` e un'entità `person` o `device_tracker` che rilevi lo stato `home`.
+**Requisiti:** una presa smart con entità `switch`, una macchina del caffè compatibile con l'alimentazione programmata e un'entità `person` o `device_tracker` che rilevi lo stato `home`.
 
 [![Importa in Home Assistant](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2Fluigi-regolo%2Fautomazioni-home-assistant%2Fblob%2Fmain%2Fautomations%2Fprese%2Faccensione_programmata_con_presenza.yaml)
 
