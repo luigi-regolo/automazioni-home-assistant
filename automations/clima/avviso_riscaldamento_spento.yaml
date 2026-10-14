@@ -1,0 +1,61 @@
+blueprint:
+  name: "Avviso valvole riscaldamento spente"
+  description: >-
+    Invia una notifica quando una delle valvole termostatiche o dei
+    termostati selezionati passa da riscaldamento attivo (heating)
+    a spento (off) e resta in questo stato per almeno 5 secondi.
+    Richiede entita climate che espongano l'attributo hvac_action.
+    Alcuni dispositivi riportano idle anziche off e in tal caso
+    l'automazione non si attiva. Non monitora raffreddamento
+    o deumidificazione.
+  domain: automation
+  author: luigi-regolo
+  input:
+    valvole_riscaldamento:
+      name: Valvole o termostati del riscaldamento
+      description: >-
+        Seleziona una o piu entita climate che espongono l'attributo
+        hvac_action con i valori heating e off.
+      selector:
+        entity:
+          multiple: true
+          filter:
+            - domain: climate
+    smartphone:
+      name: Smartphone da notificare
+      description: Seleziona lo smartphone con l'app Home Assistant.
+      selector:
+        device:
+          filter:
+            - integration: mobile_app
+    titolo_notifica:
+      name: Titolo della notifica
+      default: "Riscaldamento"
+      selector:
+        text: {}
+    messaggio_notifica:
+      name: Messaggio della notifica
+      default: "Le valvole hanno terminato il riscaldamento"
+      selector:
+        text: {}
+
+triggers:
+  - trigger: state
+    entity_id: !input valvole_riscaldamento
+    attribute: hvac_action
+    from: "heating"
+    to: "off"
+    for:
+      seconds: 5
+
+conditions: []
+
+actions:
+  - domain: mobile_app
+    type: notify
+    device_id: !input smartphone
+    title: !input titolo_notifica
+    message: !input messaggio_notifica
+
+mode: queued
+max: 10
