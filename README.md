@@ -104,6 +104,20 @@ Dopo l'importazione seleziona il sensore. Nel campo **Notifiche da inviare** con
 
 > **Da verificare prima della condivisione su TikTok.** Dopo l'importazione seleziona il sensore, l'aiutante e inserisci esattamente il testo di una delle opzioni esistenti. Per ogni ambiente si può creare una distinta automazione dal medesimo progetto. Il comportamento visivo dipende dalla dashboard configurata dall'utente.
 
+### 08 — Accendi o spegni una presa con tag NFC
+
+**Cosa fa:** quando viene scansionata l'etichetta NFC scelta, cambia lo stato della presa smart: se è accesa la spegne, se è spenta la accende. Nessuna condizione aggiuntiva.
+
+**Requisiti:** un tag NFC configurato in Home Assistant, un dispositivo capace di effettuare la scansione (ad esempio l'app Companion) e una presa smart esposta come entità `switch`.
+
+[![Importa in Home Assistant](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2Fluigi-regolo%2Fautomazioni-home-assistant%2Fblob%2Fmain%2Fautomations%2Fnfc%2Ftoggle_presa_con_tag.yaml)
+
+**[Importa direttamente in Home Assistant](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2Fluigi-regolo%2Fautomazioni-home-assistant%2Fblob%2Fmain%2Fautomations%2Fnfc%2Ftoggle_presa_con_tag.yaml)**
+
+**Importazione alternativa:** copia il **[link GitHub dell'automazione](https://github.com/luigi-regolo/automazioni-home-assistant/blob/main/automations/nfc/toggle_presa_con_tag.yaml)** e incollalo in **Impostazioni → Automazioni e scene → Progetti → Importa progetto**.
+
+> **Da testare prima della condivisione su TikTok.** Durante la creazione dell'automazione, nel campo **Scansione del tag NFC** scegli **Tag** e seleziona la tua etichetta; nel campo **Presa smart** scegli lo switch. Verifica che il carico elettrico sia compatibile con la presa. Il comando cambia l'alimentazione ma non garantisce l'avvio o l'arresto sicuro di un elettrodomestico. Evita il controllo di apparecchi ad alta potenza senza dispositivi adeguati.
+
 ### Dopo l'importazione
 
 1. Apri il progetto appena importato e scegli **Crea automazione**.
