@@ -1,0 +1,57 @@
+blueprint:
+  name: "Apri Home Assistant su tablet con rilevamento presenza"
+  description: >-
+    Quando il sensore di presenza selezionato rileva occupazione
+    per almeno 1 secondo, verifica che la persona o il dispositivo
+    scelto risulti in casa. Se la condizione è soddisfatta,
+    invia al tablet una notifica con titolo "Dashboard" e
+    messaggio "Apri". La notifica non garantisce l'apertura
+    automatica dell'app o della dashboard: l'eventuale reazione
+    dipende dalla configurazione del tablet.
+  domain: automation
+  author: luigi-regolo
+  input:
+    sensore_presenza:
+      name: Sensore di presenza
+      description: Seleziona il sensore binario che segnala presenza tramite lo stato attivo.
+      selector:
+        entity:
+          filter:
+            - domain: binary_sensor
+    presenza_casa:
+      name: Persona o dispositivo in casa
+      description: Seleziona una persona o un dispositivo che deve risultare in casa.
+      selector:
+        entity:
+          filter:
+            - domain: person
+            - domain: device_tracker
+    tablet_notifica:
+      name: Entità di notifica del tablet
+      description: Seleziona l'entità notify associata al tablet.
+      selector:
+        entity:
+          filter:
+            - domain: notify
+
+triggers:
+  - trigger: state
+    entity_id: !input sensore_presenza
+    to: "on"
+    for:
+      seconds: 1
+
+conditions:
+  - condition: state
+    entity_id: !input presenza_casa
+    state: "home"
+
+actions:
+  - action: notify.send_message
+    target:
+      entity_id: !input tablet_notifica
+    data:
+      message: "Apri"
+      title: "Dashboard"
+
+mode: single
