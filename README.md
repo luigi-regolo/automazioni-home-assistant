@@ -74,6 +74,22 @@ Dopo l'importazione seleziona il sensore. Nel campo **Notifiche da inviare** con
 
 > **Da verificare prima della condivisione su TikTok.** La modalità `dry` non è supportata da tutti i climatizzatori e l'azione non imposta un livello di umidità né spegne il dispositivo automaticamente. Il trigger scatta solo al superamento della soglia; un riavvio di Home Assistant durante i 2 minuti azzera l'attesa. È opportuno testare la notifica e la modalità HVAC prima di abilitare la nuova automazione.
 
+### 06 — Spegnimento automatico deumidificazione
+
+**Cosa fa:** quando l'umidità scende **sotto il 61% per 2 minuti**, imposta la modalità HVAC del climatizzatore su **off** e invia una notifica allo smartphone. Soglia e durata sono modificabili. Non sono presenti condizioni aggiuntive.
+
+**Requisiti:** sensore di umidità, climatizzatore compatibile e smartphone con app Home Assistant. **Importante:** `off` spegne l'intero climatizzatore, non soltanto la modalità deumidificazione.
+
+**Messaggio precompilato:** «L’umidità è tornata nei valori ideali e il climatizzatore in modalità deumidificazione è stato spento»
+
+[![Importa in Home Assistant](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2Fluigi-regolo%2Fautomazioni-home-assistant%2Fblob%2Fmain%2Fautomations%2Fclima%2Fspegnimento_automatico_deumidificazione.yaml)
+
+**[Importa direttamente in Home Assistant](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2Fluigi-regolo%2Fautomazioni-home-assistant%2Fblob%2Fmain%2Fautomations%2Fclima%2Fspegnimento_automatico_deumidificazione.yaml)
+
+**Importazione alternativa:** copia il **[link GitHub dell'automazione](https://github.com/luigi-regolo/automazioni-home-assistant/blob/main/automations/clima/spegnimento_automatico_deumidificazione.yaml)** e incollalo in **Impostazioni → Automazioni e scene → Progetti → Importa progetto**.
+
+> **Da testare prima di pubblicarla su TikTok.** Questa automazione è complementare ad AUTO 05. Se usata con AUTO 05, seleziona lo stesso sensore e climatizzatore, e mantieni la soglia di spegnimento inferiore a quella di accensione. La notifica viene inviata dopo il comando, senza verifica dello stato effettivo del climatizzatore.
+
 ### Dopo l'importazione
 
 1. Apri il progetto appena importato e scegli **Crea automazione**.
