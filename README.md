@@ -164,6 +164,20 @@ Dopo l'importazione seleziona il sensore. Nel campo **Notifiche da inviare** con
 
 > **Da verificare prima di condividerla su TikTok.** Si attiva anche nei giorni festivi che cadono tra lunedì e venerdì e indipendentemente dalla presenza di persone. Non rileva la sveglia effettiva, né chiude automaticamente la tapparella. Verifica il corretto funzionamento e la sicurezza del movimento prima di abilitarla.
 
+### 12 — Sospendi riscaldamento con finestra aperta
+
+**Cosa fa:** quando una finestra passa da **chiusa ad aperta**, applica al termostato la modalità preimpostata selezionata. Per replicare l'esempio originale, scegli **Protezione antigelo**, se supportata. Nessuna condizione aggiuntiva e nessun ripristino automatico alla chiusura.
+
+**Requisiti:** sensore di apertura finestra e termostato Home Assistant con supporto alle modalità preimpostate. I preset disponibili dipendono dal dispositivo.
+
+[![Importa in Home Assistant](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2Fluigi-regolo%2Fautomazioni-home-assistant%2Fblob%2Fmain%2Fautomations%2Friscaldamento%2Friduzione_riscaldamento_finestra_aperta.yaml)
+
+**[Importa direttamente in Home Assistant](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2Fluigi-regolo%2Fautomazioni-home-assistant%2Fblob%2Fmain%2Fautomations%2Friscaldamento%2Friduzione_riscaldamento_finestra_aperta.yaml)**
+
+**Importazione alternativa:** copia il **[link GitHub dell'automazione](https://github.com/luigi-regolo/automazioni-home-assistant/blob/main/automations/riscaldamento/riduzione_riscaldamento_finestra_aperta.yaml)** e incollalo in **Impostazioni → Automazioni e scene → Progetti → Importa progetto**.
+
+> **Da testare prima della condivisione su TikTok.** Dopo l'importazione scegli il sensore finestra e configura l'azione del termostato usando l'editor grafico, selezionando il preset effettivamente disponibile. "Protezione antigelo" non equivale necessariamente a spegnimento completo; la temperatura minima dipende dal termostato. Se il preset non è supportato, non usarlo. Alla richiusura della finestra il riscaldamento non viene ripristinato automaticamente.
+
 ### Dopo l'importazione
 
 1. Apri il progetto appena importato e scegli **Crea automazione**.
