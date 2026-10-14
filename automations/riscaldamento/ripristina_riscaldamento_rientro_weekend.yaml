@@ -1,0 +1,61 @@
+blueprint:
+  name: "Ripristina programmazione riscaldamento nel weekend"
+  description: >-
+    Quando la persona selezionata risulta in casa per almeno 5 minuti
+    il sabato o la domenica, tra le 00:00 e le 23:59, imposta
+    sui termostati selezionati il preset di programmazione scelto.
+    Per replicare l'automazione, seleziona Pianificazione se supportata.
+    Il nome effettivo del preset varia in base all'integrazione.
+    L'automazione imposta un preset, senza recuperare il precedente.
+    La presenza GPS puo essere imprecisa.
+  domain: automation
+  author: luigi-regolo
+  input:
+    persona:
+      name: Persona da monitorare
+      description: Seleziona la persona che deve risultare in casa per 5 minuti.
+      selector:
+        entity:
+          filter:
+            - domain: person
+    termostati:
+      name: Termostati da impostare
+      description: Seleziona uno o piu termostati compatibili con il preset scelto.
+      selector:
+        entity:
+          multiple: true
+          filter:
+            - domain: climate
+    preset_programmazione:
+      name: Preset di programmazione
+      description: >-
+        Inserisci il valore esatto del preset che ripristina la
+        programmazione, ad esempio Pianificazione se presente
+        tra i preset supportati. Lo stesso preset deve essere
+        supportato da tutti i termostati selezionati.
+      selector:
+        text: {}
+
+triggers:
+  - trigger: state
+    entity_id: !input persona
+    to: "home"
+    for:
+      minutes: 5
+
+conditions:
+  - condition: time
+    after: "00:00:00"
+    before: "23:59:00"
+    weekday:
+      - sat
+      - sun
+
+actions:
+  - action: climate.set_preset_mode
+    target:
+      entity_id: !input termostati
+    data:
+      preset_mode: !input preset_programmazione
+
+mode: single
