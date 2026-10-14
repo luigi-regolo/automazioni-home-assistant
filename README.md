@@ -192,11 +192,11 @@ Dopo l'importazione seleziona il sensore. Nel campo **Notifiche da inviare** con
 
 > **Da testare prima della condivisione su TikTok.** Dopo l'importazione, seleziona il sensore e configura nell'editor l'azione del termostato con un preset realmente supportato. AUTO 13 è complementare ad AUTO 12: per utilizzarle insieme scegli lo stesso sensore e lo stesso termostato. Questa automazione applica un preset predefinito, **non** ripristina necessariamente lo stato precedente all'apertura. Il timer di un minuto riparte se la finestra si riapre.
 
-### 14 — Avviso climatizzazione attiva
+### 14 — Avviso valvole riscaldamento attive
 
-**Cosa fa:** quando uno dei climatizzatori o termostati selezionati inizia a **riscaldare, raffreddare o deumidificare** per almeno **5 secondi**, invia una notifica sullo smartphone. Nessuna condizione aggiuntiva.
+**Cosa fa:** quando una delle valvole termostatiche o dei termostati selezionati indica **riscaldamento attivo per almeno 5 secondi**, invia una notifica sullo smartphone. Nessuna condizione aggiuntiva.
 
-**Requisiti:** almeno un'entità `climate` che esponga l'attributo `hvac_action` e uno smartphone con l'app ufficiale Home Assistant.
+**Requisiti:** almeno una valvola termostatica o un termostato con entità `climate` che esponga l'attributo `hvac_action` con valore `heating`, e uno smartphone con l'app ufficiale Home Assistant.
 
 **Titolo precompilato:** «Riscaldamento acceso»
 
@@ -208,7 +208,7 @@ Dopo l'importazione seleziona il sensore. Nel campo **Notifiche da inviare** con
 
 **Importazione alternativa:** copia il **[link GitHub dell'automazione](https://github.com/luigi-regolo/automazioni-home-assistant/blob/main/automations/clima/avviso_climatizzazione_attiva.yaml)** e incollalo in **Impostazioni → Automazioni e scene → Progetti → Importa progetto**.
 
-> **Da testare prima di condividerla su TikTok.** Il testo originale descrive soltanto il riscaldamento, mentre il trigger include anche raffreddamento e deumidificazione: personalizza titolo e messaggio o scegli un testo neutro per evitare notifiche fuorvianti. La notifica viene generata solo se l'integrazione aggiorna correttamente `hvac_action`; alcuni dispositivi non lo espongono.
+> **Da testare prima di condividerla su TikTok.** L'automazione controlla solo il riscaldamento (`hvac_action: heating`), non il raffreddamento o la deumidificazione. Alcune valvole non espongono `hvac_action` o non lo aggiornano in modo affidabile. La notifica conferma lo stato riportato dall'integrazione, non necessariamente l'effettiva apertura fisica della valvola.
 
 ### Dopo l'importazione
 
