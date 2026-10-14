@@ -1,0 +1,51 @@
+blueprint:
+  name: "Dashboard automatica in base al movimento"
+  description: >-
+    Quando un sensore rileva movimento per almeno 1 secondo, imposta
+    l'opzione scelta di un aiutante input_select. La dashboard deve
+    essere gia configurata per mostrare il contenuto corrispondente
+    al valore del selettore. Questo progetto non naviga tra pagine
+    e non configura la dashboard.
+  domain: automation
+  author: luigi-regolo
+  input:
+    sensore_movimento:
+      name: Sensore di movimento
+      description: Seleziona il sensore che deve attivare il cambio.
+      selector:
+        entity:
+          filter:
+            - domain: binary_sensor
+              device_class: motion
+    selettore_dashboard:
+      name: Selettore della dashboard
+      description: Seleziona un aiutante a tendina (input_select) esistente.
+      selector:
+        entity:
+          filter:
+            - domain: input_select
+    opzione_dashboard:
+      name: Opzione da mostrare
+      description: >-
+        Scrivi esattamente una delle opzioni configurate nel selettore.
+        Maiuscole, spazi e accenti devono coincidere.
+      selector:
+        text: {}
+
+triggers:
+  - trigger: state
+    entity_id: !input sensore_movimento
+    to: "on"
+    for:
+      seconds: 1
+
+conditions: []
+
+actions:
+  - action: input_select.select_option
+    target:
+      entity_id: !input selettore_dashboard
+    data:
+      option: !input opzione_dashboard
+
+mode: single
