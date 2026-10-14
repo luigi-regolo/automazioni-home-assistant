@@ -1,0 +1,57 @@
+blueprint:
+  name: "Accensione programmata presa smart con presenza"
+  description: >-
+    Dal lunedì al venerdì, all'orario configurato (predefinito 06:45),
+    accende la presa smart soltanto se la persona o il dispositivo
+    scelto risulta a casa. Non spegne automaticamente la presa.
+    Se la posizione non è aggiornata, il risultato potrebbe non
+    riflettere la presenza reale. Verifica che l'apparecchio collegato
+    possa essere alimentato in sicurezza senza sorveglianza.
+  domain: automation
+  author: luigi-regolo
+  input:
+    orario_accensione:
+      name: Orario di accensione
+      description: Ora di accensione nei giorni dal lunedì al venerdì.
+      default: "06:45:00"
+      selector:
+        time: {}
+    entita_presenza:
+      name: Presenza in casa
+      description: >-
+        Seleziona una persona o un dispositivo di tracciamento posizione.
+        L'automazione si esegue solo se lo stato è home.
+      selector:
+        entity:
+          filter:
+            - domain: person
+            - domain: device_tracker
+    presa_smart:
+      name: Presa smart
+      description: Seleziona la presa da accendere.
+      selector:
+        entity:
+          filter:
+            - domain: switch
+
+triggers:
+  - trigger: time
+    at: !input orario_accensione
+    weekday:
+      - mon
+      - tue
+      - wed
+      - thu
+      - fri
+
+conditions:
+  - condition: state
+    entity_id: !input entita_presenza
+    state: "home"
+
+actions:
+  - action: switch.turn_on
+    target:
+      entity_id: !input presa_smart
+
+mode: single
