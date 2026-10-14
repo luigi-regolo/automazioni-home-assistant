@@ -132,6 +132,24 @@ Dopo l'importazione seleziona il sensore. Nel campo **Notifiche da inviare** con
 
 > **Da testare prima della condivisione su TikTok.** Utilizza solo apparecchi che supportano l'accensione automatica senza sorveglianza e una presa adeguata alla potenza assorbita. La presenza dipende dall'aggiornamento del tracciamento; se risulta erroneamente `home`, la presa potrebbe accendersi anche senza nessuno in casa. L'automazione non spegne la presa.
 
+### 10 — Avviso spegnimento Home Assistant
+
+**Cosa fa:** quando Home Assistant **inizia uno spegnimento o un riavvio**, prova a inviare una notifica allo smartphone scelto. Nessuna condizione aggiuntiva.
+
+**Requisiti:** app ufficiale Home Assistant su smartphone, registrazione del dispositivo in Home Assistant e notifiche abilitate. Il dispositivo e il servizio di notifiche devono essere raggiungibili durante lo spegnimento.
+
+**Titolo precompilato:** «Server di casa»
+
+**Messaggio precompilato:** «Home Assistant si sta spegnendo»
+
+[![Importa in Home Assistant](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2Fluigi-regolo%2Fautomazioni-home-assistant%2Fblob%2Fmain%2Fautomations%2Fsistema%2Favviso_spegnimento_home_assistant.yaml)
+
+**[Importa direttamente in Home Assistant](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2Fluigi-regolo%2Fautomazioni-home-assistant%2Fblob%2Fmain%2Fautomations%2Fsistema%2Favviso_spegnimento_home_assistant.yaml)**
+
+**Importazione alternativa:** copia il **[link GitHub dell'automazione](https://github.com/luigi-regolo/automazioni-home-assistant/blob/main/automations/sistema/avviso_spegnimento_home_assistant.yaml)** e incollalo in **Impostazioni → Automazioni e scene → Progetti → Importa progetto**.
+
+> **Da testare prima della condivisione su TikTok.** L'avviso è un tentativo di notifica, non una conferma della consegna. Lo spegnimento lascia un tempo limitato alle automazioni e il messaggio potrebbe non arrivare. Crash, blackout, perdita di rete e interruzioni improvvise non sono rilevabili in modo affidabile da Home Assistant mentre è offline. Per il controllo della disponibilità serve un monitoraggio esterno. Evita riavvii solo per provare il progetto: verifica l'invio durante una manutenzione programmata.
+
 ### Dopo l'importazione
 
 1. Apri il progetto appena importato e scegli **Crea automazione**.
