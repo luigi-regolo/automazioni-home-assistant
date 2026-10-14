@@ -1,0 +1,83 @@
+blueprint:
+  name: "Controllo automatico umidità"
+  description: >-
+    Quando l'umidità supera la soglia configurata per il tempo
+    selezionato, imposta il climatizzatore in modalità dry
+    (deumidificazione) e invia una notifica allo smartphone.
+    Il climatizzatore deve supportare la modalità dry.
+    Non è previsto lo spegnimento automatico, come nella
+    configurazione originale. Nessuna stanza o marca predefinita.
+  domain: automation
+  author: luigi-regolo
+  input:
+    sensore_umidita:
+      name: Sensore di umidità
+      description: Seleziona un sensore che misuri l'umidità relativa in percentuale.
+      selector:
+        entity:
+          filter:
+            - domain: sensor
+              device_class: humidity
+    soglia_umidita:
+      name: Soglia di umidità
+      description: L'automazione si attiva se il valore rimane superiore alla soglia.
+      default: 65
+      selector:
+        number:
+          min: 0
+          max: 100
+          step: 1
+          unit_of_measurement: "%"
+          mode: box
+    durata_minuti:
+      name: Tempo sopra soglia
+      description: Minuti consecutivi sopra la soglia prima dell'attivazione.
+      default: 2
+      selector:
+        number:
+          min: 1
+          max: 60
+          step: 1
+          unit_of_measurement: min
+          mode: box
+    climatizzatore:
+      name: Climatizzatore
+      description: Seleziona un climatizzatore che supporti la modalità dry.
+      selector:
+        entity:
+          filter:
+            - domain: climate
+    smartphone:
+      name: Smartphone da notificare
+      description: Seleziona un dispositivo con l'app ufficiale Home Assistant.
+      selector:
+        device:
+          filter:
+            - integration: mobile_app
+    messaggio_notifica:
+      name: Messaggio notifica
+      default: "L’umidità è troppo alta e il climatizzatore è stato acceso in modalità deumidificazione."
+      selector:
+        text: {}
+
+triggers:
+  - trigger: numeric_state
+    entity_id: !input sensore_umidita
+    above: !input soglia_umidita
+    for:
+      minutes: !input durata_minuti
+
+conditions: []
+
+actions:
+  - action: climate.set_hvac_mode
+    target:
+      entity_id: !input climatizzatore
+    data:
+      hvac_mode: dry
+  - domain: mobile_app
+    type: notify
+    device_id: !input smartphone
+    message: !input messaggio_notifica
+
+mode: single
