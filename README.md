@@ -210,6 +210,24 @@ Dopo l'importazione seleziona il sensore. Nel campo **Notifiche da inviare** con
 
 > **Da testare prima di condividerla su TikTok.** L'automazione controlla solo il riscaldamento (`hvac_action: heating`), non il raffreddamento o la deumidificazione. Alcune valvole non espongono `hvac_action` o non lo aggiornano in modo affidabile. La notifica conferma lo stato riportato dall'integrazione, non necessariamente l'effettiva apertura fisica della valvola.
 
+### 15 — Avviso valvole riscaldamento spente
+
+**Cosa fa:** quando una valvola termostatica o un termostato selezionato passa da **riscaldamento attivo** (`heating`) a **spento** (`off`) e rimane in questo stato per almeno **5 secondi**, invia una notifica allo smartphone. Nessuna condizione aggiuntiva.
+
+**Requisiti:** almeno una valvola termostatica o un termostato con entità `climate` che esponga l'attributo `hvac_action` con valori `heating` e `off`, e uno smartphone con l'app ufficiale Home Assistant.
+
+**Titolo precompilato:** «Riscaldamento»
+
+**Messaggio precompilato:** «Le valvole hanno terminato il riscaldamento»
+
+[![Importa in Home Assistant](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2Fluigi-regolo%2Fautomazioni-home-assistant%2Fblob%2Fmain%2Fautomations%2Fclima%2Favviso_riscaldamento_spento.yaml)
+
+**[Importa direttamente in Home Assistant](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2Fluigi-regolo%2Fautomazioni-home-assistant%2Fblob%2Fmain%2Fautomations%2Fclima%2Favviso_riscaldamento_spento.yaml)**
+
+**Importazione alternativa:** copia il **[link GitHub dell'automazione](https://github.com/luigi-regolo/automazioni-home-assistant/blob/main/automations/clima/avviso_riscaldamento_spento.yaml)** e incollalo in **Impostazioni → Automazioni e scene → Progetti → Importa progetto**.
+
+> **Da testare prima di condividerla su TikTok.** Alcuni dispositivi passano da `heating` a `idle` invece di `off`: in tal caso questa automazione non invia la notifica. Controlla gli stati effettivamente esposti dalla tua integrazione. La notifica riflette lo stato riportato da Home Assistant, non necessariamente la posizione fisica della valvola.
+
 ### Dopo l'importazione
 
 1. Apri il progetto appena importato e scegli **Crea automazione**.
