@@ -1,0 +1,82 @@
+blueprint:
+  name: "Spegnimento automatico deumidificazione"
+  description: >-
+    Quando l'umidità scende sotto la soglia configurata per il tempo
+    selezionato, imposta il climatizzatore in modalità off e invia una
+    notifica allo smartphone. La modalità off spegne l'intero
+    climatizzatore, non solo la deumidificazione. Non sono previste
+    ulteriori condizioni. Esempio generico senza stanze o marche.
+  domain: automation
+  author: luigi-regolo
+  input:
+    sensore_umidita:
+      name: Sensore di umidità
+      description: Seleziona un sensore che misuri l'umidità relativa in percentuale.
+      selector:
+        entity:
+          filter:
+            - domain: sensor
+              device_class: humidity
+    soglia_umidita:
+      name: Soglia di umidità
+      description: L'automazione si attiva quando il valore rimane inferiore alla soglia.
+      default: 61
+      selector:
+        number:
+          min: 0
+          max: 100
+          step: 1
+          unit_of_measurement: "%"
+          mode: box
+    durata_minuti:
+      name: Tempo sotto soglia
+      description: Minuti consecutivi sotto la soglia prima dell'attivazione.
+      default: 2
+      selector:
+        number:
+          min: 1
+          max: 60
+          step: 1
+          unit_of_measurement: min
+          mode: box
+    climatizzatore:
+      name: Climatizzatore
+      description: Seleziona il climatizzatore da spegnere.
+      selector:
+        entity:
+          filter:
+            - domain: climate
+    smartphone:
+      name: Smartphone da notificare
+      description: Seleziona un dispositivo con l'app ufficiale Home Assistant.
+      selector:
+        device:
+          filter:
+            - integration: mobile_app
+    messaggio_notifica:
+      name: Messaggio notifica
+      default: "L’umidità è tornata nei valori ideali e il climatizzatore in modalità deumidificazione è stato spento"
+      selector:
+        text: {}
+
+triggers:
+  - trigger: numeric_state
+    entity_id: !input sensore_umidita
+    below: !input soglia_umidita
+    for:
+      minutes: !input durata_minuti
+
+conditions: []
+
+actions:
+  - action: climate.set_hvac_mode
+    target:
+      entity_id: !input climatizzatore
+    data:
+      hvac_mode: "off"
+  - domain: mobile_app
+    type: notify
+    device_id: !input smartphone
+    message: !input messaggio_notifica
+
+mode: single
