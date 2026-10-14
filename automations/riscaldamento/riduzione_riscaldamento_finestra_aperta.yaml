@@ -1,0 +1,43 @@
+blueprint:
+  name: "Sospendi riscaldamento all'apertura della finestra"
+  description: >-
+    Quando il sensore passa da finestra chiusa a finestra aperta,
+    esegue l'azione di impostazione della modalità preimpostata del
+    termostato scelta dall'utente. Per replicare il comportamento
+    originale, scegliere Protezione antigelo se disponibile.
+    I nomi e le modalità supportate variano tra i termostati.
+    Non ripristina automaticamente il riscaldamento alla chiusura
+    della finestra. Non aggiunge altre condizioni.
+  domain: automation
+  author: luigi-regolo
+  input:
+    sensore_finestra:
+      name: Sensore finestra
+      description: Seleziona il sensore che indica se una finestra è aperta.
+      selector:
+        entity:
+          filter:
+            - domain: binary_sensor
+              device_class:
+                - window
+                - opening
+    azione_termostato:
+      name: Modalità termostato da impostare
+      description: >-
+        Aggiungi l'azione "Imposta modalità preimpostata termostato",
+        seleziona il tuo termostato e scegli un preset supportato,
+        ad esempio Protezione antigelo. L'azione non deve rimanere vuota.
+      selector:
+        action: {}
+
+triggers:
+  - trigger: state
+    entity_id: !input sensore_finestra
+    from: "off"
+    to: "on"
+
+conditions: []
+
+actions: !input azione_termostato
+
+mode: single
