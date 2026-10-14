@@ -1,0 +1,51 @@
+blueprint:
+  name: "Riattiva riscaldamento quando rientri a casa (lun-ven)"
+  description: >-
+    Quando la persona selezionata risulta in casa per almeno
+    15 secondi, dal lunedì al venerdì tra le 00:00 e le 23:59,
+    esegue l'azione dei termostati configurata nell'editor.
+    Per replicare l'esempio originale, seleziona il preset
+    Pianificazione o quello equivalente supportato dal termostato.
+    Non ripristina lo stato precedente: applica il preset scelto.
+    Il rilevamento della presenza può avere ritardi o falsi positivi.
+  domain: automation
+  author: luigi-regolo
+  input:
+    persona:
+      name: Persona da monitorare
+      description: Seleziona la persona che deve risultare in casa per almeno 15 secondi.
+      selector:
+        entity:
+          filter:
+            - domain: person
+    azione_termostati:
+      name: Preset dei termostati al rientro
+      description: >-
+        Aggiungi l'azione Imposta modalità preimpostata termostato,
+        seleziona uno o più termostati compatibili e scegli il preset
+        Pianificazione, se disponibile, o quello equivalente.
+        Non lasciare questa sezione vuota.
+      selector:
+        action: {}
+
+triggers:
+  - trigger: state
+    entity_id: !input persona
+    to: "home"
+    for:
+      seconds: 15
+
+conditions:
+  - condition: time
+    after: "00:00:00"
+    before: "23:59:00"
+    weekday:
+      - mon
+      - tue
+      - wed
+      - thu
+      - fri
+
+actions: !input azione_termostati
+
+mode: single
