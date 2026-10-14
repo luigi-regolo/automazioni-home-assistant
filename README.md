@@ -256,6 +256,24 @@ Dopo l'importazione seleziona il sensore. Nel campo **Notifiche da inviare** con
 
 > **Nota:** Se usata insieme ad AUTO 16, seleziona la stessa entità persona e gli stessi termostati. La presenza GPS può generare falsi rilevamenti: 15 secondi non garantiscono che il rientro sia reale. La modalità Pianificazione deve essere supportata dal termostato. L'automazione applica un preset specifico, non recupera automaticamente quello precedente.
 
+### 18 — Riduci riscaldamento fuori casa nel weekend
+
+**Cosa fa:** quando esci di casa durante il weekend e risulti assente per almeno **2 minuti**, Home Assistant imposta automaticamente i termostati sulla modalità selezionata e invia una notifica allo smartphone.
+
+**Requisiti:** un'entità persona configurata in Home Assistant, uno o più termostati compatibili con le modalità preimpostate e uno smartphone con l'app Home Assistant.
+
+**Titolo precompilato:** «Riscaldamento sospeso»
+
+**Messaggio precompilato:** «Il riscaldamento è stato fermato perché nel weekend non sei a casa»
+
+[![Importa in Home Assistant](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2Fluigi-regolo%2Fautomazioni-home-assistant%2Fblob%2Fmain%2Fautomations%2Friscaldamento%2Friduci_riscaldamento_assenza_weekend.yaml)
+
+**[Importa direttamente in Home Assistant](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2Fluigi-regolo%2Fautomazioni-home-assistant%2Fblob%2Fmain%2Fautomations%2Friscaldamento%2Friduci_riscaldamento_assenza_weekend.yaml)**
+
+**Importazione alternativa:** copia il **[link GitHub dell'automazione](https://github.com/luigi-regolo/automazioni-home-assistant/blob/main/automations/riscaldamento/riduci_riscaldamento_assenza_weekend.yaml)** e incollalo in **Impostazioni → Automazioni e scene → Progetti → Importa progetto**.
+
+> **Nota:** il rilevamento della presenza dipende dall'aggiornamento della posizione e può generare falsi rilevamenti. La modalità selezionata deve essere supportata dai termostati. L'automazione non ripristina automaticamente il riscaldamento quando rientri a casa.
+
 ### Dopo l'importazione
 
 1. Apri il progetto appena importato e scegli **Crea automazione**.
