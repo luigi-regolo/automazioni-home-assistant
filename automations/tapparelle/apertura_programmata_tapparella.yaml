@@ -1,0 +1,44 @@
+blueprint:
+  name: "Apertura programmata tapparella nei giorni feriali"
+  description: >-
+    Apre la tapparella selezionata alle 07:00, dal lunedì al venerdì.
+    L'orario può essere modificato. Non sono previste condizioni
+    aggiuntive: la tapparella viene comandata anche se in casa non
+    c'è nessuno o se il giorno è festivo ma cade tra lunedì e venerdì.
+    Non rileva la sveglia reale e non dispone di funzioni di chiusura.
+    Verifica che il motore e l'area di movimento siano sicuri.
+  domain: automation
+  author: luigi-regolo
+  input:
+    orario_apertura:
+      name: Orario di apertura
+      description: Orario di apertura dal lunedì al venerdì.
+      default: "07:00:00"
+      selector:
+        time: {}
+    tapparella:
+      name: Tapparella da aprire
+      description: Seleziona la tapparella da aprire.
+      selector:
+        entity:
+          filter:
+            - domain: cover
+
+triggers:
+  - trigger: time
+    at: !input orario_apertura
+    weekday:
+      - mon
+      - tue
+      - wed
+      - thu
+      - fri
+
+conditions: []
+
+actions:
+  - action: cover.open_cover
+    target:
+      entity_id: !input tapparella
+
+mode: single
