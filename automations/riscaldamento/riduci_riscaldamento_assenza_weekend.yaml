@@ -1,0 +1,81 @@
+blueprint:
+  name: "Riduci riscaldamento fuori casa nel weekend"
+  description: >-
+    Quando la persona selezionata risulta fuori casa per 2 minuti,
+    il sabato o la domenica tra le 00:00 e le 23:59, imposta sui
+    termostati scelti il preset Fuori casa (di norma 'away') e invia
+    una notifica allo smartphone. Il preset deve essere supportato
+    dai termostati selezionati. La presenza GPS può essere imprecisa
+    e il riscaldamento non viene ripristinato al rientro.
+  domain: automation
+  author: luigi-regolo
+  input:
+    persona:
+      name: Persona da monitorare
+      description: Seleziona la persona che deve risultare fuori casa per almeno 2 minuti.
+      selector:
+        entity:
+          filter:
+            - domain: person
+    termostati:
+      name: Termostati da impostare
+      description: Seleziona uno o più termostati che supportano il preset scelto.
+      selector:
+        entity:
+          multiple: true
+          filter:
+            - domain: climate
+    preset_assenza:
+      name: Preset quando sei fuori casa
+      description: >-
+        Il preset 'away' è generalmente mostrato come 'Fuori casa'.
+        Inserisci il valore effettivamente supportato dai tuoi termostati.
+      default: "away"
+      selector:
+        text: {}
+    smartphone:
+      name: Smartphone da notificare
+      description: Seleziona uno smartphone con app Home Assistant e notifiche abilitate.
+      selector:
+        device:
+          filter:
+            - integration: mobile_app
+    titolo_notifica:
+      name: Titolo della notifica
+      default: "Riscaldamento sospeso"
+      selector:
+        text: {}
+    messaggio_notifica:
+      name: Messaggio della notifica
+      default: "Il riscaldamento è stato fermato perché nel weekend non sei a casa"
+      selector:
+        text: {}
+
+triggers:
+  - trigger: state
+    entity_id: !input persona
+    to: "not_home"
+    for:
+      minutes: 2
+
+conditions:
+  - condition: time
+    after: "00:00:00"
+    before: "23:59:00"
+    weekday:
+      - sat
+      - sun
+
+actions:
+  - action: climate.set_preset_mode
+    target:
+      entity_id: !input termostati
+    data:
+      preset_mode: !input preset_assenza
+  - domain: mobile_app
+    type: notify
+    device_id: !input smartphone
+    title: !input titolo_notifica
+    message: !input messaggio_notifica
+
+mode: single
